@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#b51225">
+
+<title>Atlético Clube do Biscainho</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Arial,sans-serif;background:#f4f4f6;color:#222}
+
+header{background:#b51225;color:white;text-align:center;padding:28px 16px}
+
+.escudo{font-size:54px}
+
+header h1{font-size:24px;margin:8px 0}
+
+header p{margin:0}
+
+nav{display:flex;justify-content:center;flex-wrap:wrap;background:#fff;position:sticky;top:0;box-shadow:0 2px 6px #ddd}
+
+nav button{border:0;background:white;padding:14px 12px;font-weight:bold;color:#333;cursor:pointer}
+
+nav button:hover{background:#ffdf35}
+
+main{max-width:850px;margin:auto;padding:18px}
+
+section{display:none}
+
+section.ativa{display:block}
+
+.cartao{background:white;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 2px 8px #ddd}
+
+h2{color:#b51225}
+
+.destaque{background:#ffdf35;padding:18px;border-radius:10px;text-align:center}
+
+label{display:block;margin-top:12px;font-weight:bold}
+
+input,textarea{width:100%;padding:11px;margin-top:5px;border:1px solid #ccc;border-radius:6px}
+
+.botao{background:#b51225;color:white;border:0;padding:12px 18px;border-radius:7px;margin-top:12px;cursor:pointer}
+
+footer{text-align:center;background:#222;color:white;padding:22px;margin-top:25px}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="escudo">⚽</div>
+
+<h1>ATLÉTICO CLUBE DO BISCAINHO</h1>
+
+<p>Paixão, união e orgulho da nossa terra</p>
+
+</header>
+
+<nav>
+
+<button onclick="mostrar('inicio')">Início</button>
+
+<button onclick="mostrar('jogos')">Jogos</button>
+
+<button onclick="mostrar('plantel')">Plantel</button>
+
+<button onclick="mostrar('noticias')">Notícias</button>
+
+<button onclick="mostrar('socios')">Sócios</button>
+
+</nav>
+
+<main>
+
+<section id="inicio" class="ativa">
+
+<div class="destaque">
+
+<h2>Bem-vindos à nossa casa!</h2>
+
+<p>Acompanhe tudo sobre o Atlético Clube do Biscainho.</p>
+
+</div>
+
+<div class="cartao">
+
+<h2>O nosso clube</h2>
+
+<p>Esta é a aplicação oficial do Atlético Clube do Biscainho. Aqui poderás acompanhar os jogos, conhecer o plantel, consultar notícias e encontrar informações para os nossos sócios.</p>
+
+</div>
+
+<div class="cartao">
+
+<h2>🔴🟡🔵 Juntos pelo Biscainho!</h2>
+
+<p>Uma equipa, uma família, um orgulho.</p>
+
+</div>
+
+</section>
+
+<section id="jogos">
+
+<div class="cartao">
+
+<h2>Calendário de jogos</h2>
+
+<p>É aqui que vamos divulgar os jogos do campeonato INATEL.</p>
+
+<p><strong>Próximo jogo:</strong> A anunciar</p>
+
+<p><strong>Local:</strong> A anunciar</p>
+
+<p><strong>Resultado:</strong> —</p>
+
+</div>
+
+</section>
+
+<section id="plantel">
+
+<div class="cartao">
+
+<h2>O nosso plantel</h2>
+
+<p>Em breve: apresentação dos jogadores, equipa técnica e staff.</p>
+
+<p>🔴🟡🔵 Atlético Clube do Biscainho</p>
+
+</div>
+
+</section>
+
+<section id="noticias">
+
+<div class="cartao">
+
+<h2>Notícias do clube</h2>
+
+<p>Aqui serão divulgadas as novidades, contratações, renovações e comunicados oficiais.</p>
+
+<p><strong>Última notícia:</strong> Bem-vindos à aplicação do nosso clube!</p>
+
+</div>
+
+</section>
+
+<section id="socios">
+
+<div class="cartao">
+
+<h2>Informações para sócios</h2>
+
+<p>Para informações sobre inscrições, quotas ou outras questões, contacta a direção do clube.</p>
+
+<label for="nome">Nome</label>
+
+<input id="nome" placeholder="O teu nome">
+
+<label for="contacto">Contacto (opcional)</label>
+
+<input id="contacto" placeholder="Telefone ou email">
+
+<label for="mensagem">Mensagem</label>
+
+<textarea id="mensagem" rows="4" placeholder="Como podemos ajudar?"></textarea>
+
+<button class="botao" onclick="enviarMensagem()">Preparar mensagem</button>
+
+<p id="aviso"></p>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>Atlético Clube do Biscainho</p>
+
+<p>🔴 Vermelho | 🟡 Amarelo | 🔵 Azul</p>
+
+<p>Aplicação oficial do clube</p>
+
+</footer>
+
+<script>
+
+function mostrar(id){
+
+document.querySelectorAll('main section').forEach(s=>s.classList.remove('ativa'));
+
+document.getElementById(id).classList.add('ativa');
+
+window.scrollTo(0,0);
+
+}
+
+function enviarMensagem(){
+
+const nome=document.getElementById('nome').value.trim();
+
+const contacto=document.getElementById('contacto').value.trim();
+
+const mensagem=document.getElementById('mensagem').value.trim();
+
+if(!nome||!mensagem){
+
+document.getElementById('aviso').textContent='Preenche o nome e a mensagem, por favor.';
+
+return;
+
+}
+
+const texto='Contacto para o clube\nNome: '+nome+'\nContacto: '+contacto+'\nMensagem: '+mensagem;
+
+const url='https://wa.me/?text='+encodeURIComponent(texto);
+
+window.open(url,'_blank');
+
+document.getElementById('aviso').textContent='A mensagem foi preparada para enviares pelo WhatsApp.';
+
+}
+
+</script>
+
+</body>
+
+</html>
